@@ -1,0 +1,20 @@
+.chat-head {
+  border-bottom: 1px solid var(--light-grey);
+  width: 100%;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--light-white);
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__email {
+    font-size: 14px;
+  }
+}

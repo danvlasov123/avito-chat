@@ -1,0 +1,38 @@
+.btn {
+  position: relative;
+  z-index: 1;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s linear;
+
+  &--grey {
+    background-color: var(--light-grey);
+  }
+
+  &--primary {
+    color: white;
+    background-color: var(--violet);
+  }
+
+  &--transparent {
+    background-color: transparent;
+    height: auto;
+    padding: 0;
+  }
+
+  &--transparent:hover {
+    background-color: var(--white-violet);
+    box-shadow: var(--white-violet) 0px 0px 0px 8px;
+  }
+
+  &:hover {
+    opacity: 0.85;
+  }
+}

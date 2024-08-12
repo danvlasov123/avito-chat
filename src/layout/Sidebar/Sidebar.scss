@@ -1,0 +1,15 @@
+.sidebar {
+  max-width: 400px;
+  width: var(--width-sidebar);
+  border-right: 1px solid var(--light-grey);
+  height: 100dvh;
+
+  &__head {
+    width: 100%;
+    padding: 8px 16px;
+  }
+
+  &__content {
+    height: 100%;
+  }
+}

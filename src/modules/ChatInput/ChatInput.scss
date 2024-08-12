@@ -1,0 +1,23 @@
+.chat-input {
+  width: 100%;
+  padding-top: 4px;
+  padding-bottom: 16px;
+  padding-left: var(--chat-padding);
+  padding-right: var(--chat-padding);
+
+  &__field {
+    width: 100%;
+
+    .input__field {
+      font-size: 0.925rem;
+    }
+  }
+
+  .input__adornment--start {
+    padding-left: 6px;
+  }
+
+  &__send {
+    border-radius: 16px;
+  }
+}

@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+:root {
+  --light-grey: rgb(236, 233, 233);
+  --light-white: #fffbf5;
+  --light-beige: #f7efe5;
+  --white-violet: #f9f4fb;
+  --light-violet: #c3acd0;
+  --violet: #7743db;
+  --grey: rgb(115, 115, 115);
+  --width-sidebar: 22%;
+  --width-chat: calc(100% - 22%);
+  --chat-padding: calc((100cqw - 1024px + 16px) / 2);
+  --green: #55883b;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: var(--light-grey);
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--light-beige);
+}

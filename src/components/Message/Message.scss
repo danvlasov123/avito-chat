@@ -1,0 +1,29 @@
+.message {
+  &__content {
+    border: 1px solid var(--light-grey);
+    padding: 14px;
+    border-radius: 1rem;
+  }
+
+  &__text {
+    font-size: 14px;
+  }
+
+  &__info {
+    padding: 0 6px;
+    padding-top: 2px;
+  }
+
+  &__status span,
+  &__date {
+    font-size: 10px;
+  }
+}
+
+.message--me {
+  margin-left: auto;
+  .message__content {
+    background-color: var(--violet);
+    color: white;
+  }
+}
