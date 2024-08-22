@@ -14,4 +14,9 @@ export type TypographyProps = {
   as?: TypographyVariants;
   className?: string;
   color?: string;
+  fontSize?: string | number;
+  fontWeight?: string | number;
+  lineHeight?: string | number;
+  uppercase?: boolean;
+  padding?: string;
 } & ComponentProps<TypographyVariants>;

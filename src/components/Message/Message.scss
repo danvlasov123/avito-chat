@@ -1,12 +1,29 @@
 .message {
   &__content {
     border: 1px solid var(--light-grey);
-    padding: 14px;
     border-radius: 1rem;
+    overflow: hidden;
+  }
+
+  &__image {
+    max-width: 600px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s linear;
+  }
+
+  &__image:hover {
+    opacity: 0.8;
+  }
+
+  &__image img {
+    display: block;
+    width: 100%;
   }
 
   &__text {
     font-size: 14px;
+    padding: 12px;
   }
 
   &__info {

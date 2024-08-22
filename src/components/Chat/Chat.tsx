@@ -12,7 +12,6 @@ import { STATUS_MESSAGE } from '../Message';
 const Chat: FC<ChatProps> = memo((props) => {
   const {
     name,
-    img,
     message,
     isSelected = false,
     status,
@@ -36,7 +35,7 @@ const Chat: FC<ChatProps> = memo((props) => {
       alignItems='center'
       onClick={() => onSelect(id)}
     >
-      <Avatar width={48} height={48} src={img} alt={name} />
+      <Avatar width={46} height={46} alt={name} name='В' />
       <Flex direction='column' gap={4} justifyContent='center' full>
         <Flex justifyContent='space-between' alignItems='center' full>
           <Typography className='chat__name'>{name}</Typography>

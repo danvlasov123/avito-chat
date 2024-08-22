@@ -11,7 +11,8 @@ const Search: FC<SearchProps> = ({ wrapperClassName, ...props }) => {
   return (
     <Input
       wrapperClassName={inputSearchClassName}
-      endAdornment={
+      variant='secondary'
+      startAdornment={
         <Button variant='transparent'>
           <SearchIcon width={16} height={16} />
         </Button>

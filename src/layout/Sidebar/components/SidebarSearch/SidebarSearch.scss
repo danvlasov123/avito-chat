@@ -1,6 +1,16 @@
 .sidebar-search {
+  padding: 8px;
+  padding-bottom: 0;
   width: 100%;
   &__search {
     width: 100%;
+    &--input {
+      background-color: transparent !important;
+      border: 1px solid var(--white-grey) !important;
+      transition: all 0.2s linear;
+      &:focus {
+        background-color: white !important;
+      }
+    }
   }
 }

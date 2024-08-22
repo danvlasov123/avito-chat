@@ -7,4 +7,5 @@ export type MessageProps = {
   status?: MessageStatuses;
   date?: string;
   isMy?: boolean;
+  image: string;
 };

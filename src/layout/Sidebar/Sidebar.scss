@@ -1,15 +1,20 @@
 .sidebar {
-  max-width: 400px;
   width: var(--width-sidebar);
-  border-right: 1px solid var(--light-grey);
   height: 100dvh;
+  background-color: var(--light-grey);
+  padding: 16px 8px;
+  border-right: 1px solid white;
+}
 
-  &__head {
-    width: 100%;
-    padding: 8px 16px;
-  }
+.logo {
+  padding: 0 8px;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  margin: 0;
+}
 
-  &__content {
-    height: 100%;
-  }
+.sidebar-hr {
+  padding: 0 8px;
+  width: 100%;
 }

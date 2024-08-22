@@ -2,22 +2,24 @@
   width: 100%;
   padding-top: 4px;
   padding-bottom: 16px;
-  padding-left: var(--chat-padding);
-  padding-right: var(--chat-padding);
+  border-radius: 16px;
 
-  &__field {
-    width: 100%;
+  max-width: 60%;
+  margin: 0 auto;
 
-    .input__field {
-      font-size: 0.925rem;
-    }
+  &__field textarea {
+    padding-left: 42px !important;
+    font-size: 15px;
   }
 
-  .input__adornment--start {
-    padding-left: 6px;
+  &__attachment {
+    margin-bottom: 11px;
+    margin-left: 6px;
   }
 
   &__send {
+    margin-bottom: 5px;
     border-radius: 16px;
+    margin-right: -3px;
   }
 }

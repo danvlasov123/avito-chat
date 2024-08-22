@@ -3,6 +3,10 @@
   padding: 48px 0px;
   flex: 1 0 0px;
   height: 100%;
-  padding-left: var(--chat-padding);
-  padding-right: var(--chat-padding);
+  width: 100%;
+
+  &__content {
+    max-width: 60%;
+    margin: 0 auto;
+  }
 }

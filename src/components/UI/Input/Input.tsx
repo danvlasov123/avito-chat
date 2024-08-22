@@ -1,46 +1,69 @@
-import { FC, useRef } from 'react';
+import { ChangeEvent, createElement, FC, useRef } from 'react';
 import { InputProps } from './types';
 
 import cn from 'classnames';
 
 import './Input.scss';
+import useAutosizeTextArea from 'src/hooks/useAutosizeTextArea';
 
 const Input: FC<InputProps> = (props) => {
-  const { className, endAdornment, wrapperClassName, startAdornment, ...rest } =
-    props;
+  const {
+    className,
+    endAdornment,
+    wrapperClassName,
+    variant = 'primary',
+    startAdornment,
+    as = 'input',
+    onChange,
+    ...rest
+  } = props;
 
-  const inputClassName = cn('input__field', className);
-  const inputWrapperClassName = cn('input', wrapperClassName);
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  useAutosizeTextArea(textAreaRef.current, props.value || '');
 
-  const handleFocus = () => {
-    if (wrapperRef.current) {
-      wrapperRef.current.style.borderColor = 'var(--light-violet)';
-    }
-  };
+  const inputWrapperClassName = cn(
+    'input',
+    `input--${variant}`,
+    {
+      'input--adornment--start': startAdornment,
+      'input--adornment--end': endAdornment,
+    },
+    wrapperClassName
+  );
+  const inputClassName = cn('input__field', className, {
+    textarea__field: as === 'textarea',
+  });
 
-  const handleBlur = () => {
-    if (wrapperRef.current) {
-      wrapperRef.current.style.borderColor = 'var(--light-grey)';
-    }
-  };
+  const Component = createElement(as, {
+    className: inputClassName,
+    ...(as === 'textarea' && {
+      rows: 1,
+      ref: textAreaRef,
+    }),
+    onChange: (e: ChangeEvent<HTMLInputElement>) =>
+      onChange && onChange(e.target.value),
+    ...rest,
+  });
 
   return (
-    <div className={inputWrapperClassName} ref={wrapperRef}>
+    <div className={inputWrapperClassName}>
       {startAdornment && (
-        <div className='input__adornment input__adornment--start'>
+        <div
+          className={cn('input__adornment', 'input__adornment--start', {
+            textarea__adornment: as === 'textarea',
+          })}
+        >
           {startAdornment}
         </div>
       )}
-      <input
-        className={inputClassName}
-        {...rest}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-      />
+      {Component}
       {endAdornment && (
-        <div className='input__adornment input__adornment--end'>
+        <div
+          className={cn('input__adornment', 'input__adornment--end', {
+            textarea__adornment: as === 'textarea',
+          })}
+        >
           {endAdornment}
         </div>
       )}

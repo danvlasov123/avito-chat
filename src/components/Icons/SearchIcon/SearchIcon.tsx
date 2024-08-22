@@ -4,21 +4,22 @@ import { IconProps } from '../types';
 const SearchIcon: FC<IconProps> = ({
   width = 24,
   height = 24,
-  fill = '#9ca3af',
+  fill = 'var(--grey)',
   ...props
 }) => {
   return (
     <svg
+      xmlns='http://www.w3.org/2000/svg'
       width={width}
       height={height}
-      xmlns='http://www.w3.org/2000/svg'
-      fillRule='evenodd'
-      clipRule='evenodd'
-      viewBox='0 0 24 24'
-      fill={fill}
       {...props}
+      fill='none'
     >
-      <path d='M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z' />
+      <path
+        stroke={fill}
+        strokeLinecap='round'
+        d='M11.284 11.36 13.6 13.6m-.747-5.973a5.227 5.227 0 1 1-10.453 0 5.227 5.227 0 0 1 10.453 0Z'
+      ></path>
     </svg>
   );
 };

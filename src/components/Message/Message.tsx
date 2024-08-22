@@ -12,7 +12,13 @@ const STATUS_TRANSLATE = {
   READ: 'Прочитано',
 } as const;
 
-const Message: FC<MessageProps> = ({ text, status, date, isMy = false }) => {
+const Message: FC<MessageProps> = ({
+  text,
+  status,
+  date,
+  isMy = false,
+  image,
+}) => {
   const justifyContentMessageInfo: FlexJustifyContent = status
     ? 'space-between'
     : 'end';
@@ -29,9 +35,21 @@ const Message: FC<MessageProps> = ({ text, status, date, isMy = false }) => {
   return (
     <Flex className={classNameMessage} direction='column'>
       <div className='message__content'>
-        <Typography className='message__text' color={isMy ? 'white' : 'black'}>
-          {text}
-        </Typography>
+        {image && (
+          <a data-fancybox='gallery' href={image}>
+            <div className='message__image'>
+              <img src={image} alt='image' />
+            </div>
+          </a>
+        )}
+        {text && (
+          <Typography
+            className='message__text'
+            color={isMy ? 'white' : 'black'}
+          >
+            {text}
+          </Typography>
+        )}
       </div>
       {(status || date) && (
         <Flex
@@ -43,9 +61,11 @@ const Message: FC<MessageProps> = ({ text, status, date, isMy = false }) => {
           {status && (
             <Flex className='message__status' alignItems='center' gap={6}>
               <DoubleCheckIcon width={12} height={12} fill={color[status]} />
-              <Typography as='span' color='var(--grey)'>
-                {STATUS_TRANSLATE[status]}
-              </Typography>
+              {text.length > 16 && (
+                <Typography fontSize={12} as='span' color='var(--grey)'>
+                  {STATUS_TRANSLATE[status]}
+                </Typography>
+              )}
             </Flex>
           )}
           {date && (

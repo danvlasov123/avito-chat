@@ -1,4 +1,8 @@
 .chat-bubble {
   width: var(--width-chat);
   height: 100dvh;
+
+  &__content {
+    height: 100%;
+  }
 }
