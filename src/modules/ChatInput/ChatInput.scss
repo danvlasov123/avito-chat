@@ -3,12 +3,11 @@
   padding-top: 4px;
   padding-bottom: 16px;
   border-radius: 16px;
-
   max-width: 60%;
   margin: 0 auto;
 
   &__field textarea {
-    padding-left: 42px !important;
+    padding-left: 66px !important;
     font-size: 15px;
   }
 
@@ -21,5 +20,15 @@
     margin-bottom: 5px;
     border-radius: 16px;
     margin-right: -3px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat-input {
+    max-width: none;
+    padding: 16px;
+    &__send {
+      padding: 0 8px;
+    }
   }
 }

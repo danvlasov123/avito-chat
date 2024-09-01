@@ -21,3 +21,12 @@
 .chat-info.open {
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .chat-info {
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    max-width: none;
+  }
+}

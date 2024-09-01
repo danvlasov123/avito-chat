@@ -17,4 +17,5 @@ export type FlexProps = {
   gap?: number;
   direction?: FlexDirection;
   full?: boolean;
+  padding?: string;
 } & ComponentProps<'div'>;

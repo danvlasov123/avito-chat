@@ -7,6 +7,7 @@ export type ChatProps = {
   date: string;
   isSelected: boolean;
   status: MessageStatuses;
+  type: 'group' | 'chat',
   id: number;
   onSelect: (id: number) => void;
 };

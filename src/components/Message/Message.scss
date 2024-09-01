@@ -44,3 +44,24 @@
     color: white;
   }
 }
+
+@media (max-width: 768px) {
+  .message {
+    &__text {
+      padding: 8px;
+      font-size: 12px !important;
+    }
+
+    &__info {
+      padding-top: 0;
+    }
+
+    &__status span {
+      font-size: 10px !important;
+    }
+
+    &__date {
+      font-size: 10px !important;
+    }
+  }
+}

@@ -14,6 +14,7 @@ const Flex: FC<PropsWithChildren<FlexProps>> = forwardRef(
       direction = 'row',
       full = false,
       gap = 0,
+      padding,
       ...props
     },
     ref
@@ -29,6 +30,7 @@ const Flex: FC<PropsWithChildren<FlexProps>> = forwardRef(
     const flexStyle: CSSProperties = {
       gap,
       ...(full && { width: '100%' }),
+      ...(padding && { padding }),
       ...props.style,
     };
 

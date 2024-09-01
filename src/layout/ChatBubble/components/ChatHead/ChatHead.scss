@@ -9,3 +9,43 @@
     opacity: 0.8;
   }
 }
+
+@media (max-width: 768px) {
+  .chat-head {
+    position: relative;
+    padding: 8px 12px;
+
+    &__info {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__user {
+      &--info {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &__name {
+      font-size: 14px !important;
+    }
+
+    &__email {
+      font-size: 12px !important;
+    }
+
+    &__actions {
+      display: none;
+    }
+    &__other {
+      padding: 10px 24px;
+      background-color: white;
+      border-bottom: 1px solid var(--light-grey);
+    }
+  }
+}

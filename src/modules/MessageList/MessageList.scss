@@ -10,3 +10,14 @@
     margin: 0 auto;
   }
 }
+
+@media (max-width: 768px) {
+  .message-list {
+    padding: 0;
+    &__content {
+      max-width: none;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+  }
+}

@@ -1,9 +1,16 @@
 .sidebar {
-  width: var(--width-sidebar);
+  min-width: var(--width-sidebar);
   height: 100dvh;
   background-color: var(--light-grey);
   padding: 16px 8px;
   border-right: 1px solid white;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+  }
 }
 
 .logo {

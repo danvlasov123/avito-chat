@@ -32,6 +32,13 @@
     line-height: 0;
   }
 
+  &__timer {
+    font-size: 12px !important;
+    background-color: var(--white-grey);
+    padding: 1px 4px;
+    border-radius: 6px;
+  }
+
   &--selected {
     background-color: var(--violet) !important;
   }

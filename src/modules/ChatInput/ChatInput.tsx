@@ -7,6 +7,10 @@ import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
 import { MessageFileModal } from 'src/components/Modals';
 
 import { motion } from 'framer-motion';
+import { useMediaQuery } from 'usehooks-ts';
+
+import { TbMessageDots } from 'react-icons/tb';
+import { ChatInputTemplates } from './templates';
 
 type ChatInputProps = {
   onSubmit: (value: { text: string; image: string }) => void;
@@ -17,6 +21,7 @@ const ChatInput: FC<ChatInputProps> = ({ onSubmit }) => {
   const [value, setValue] = useState('');
 
   const fileRef = useRef<HTMLInputElement | null>(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const handleClickAttachment = () => {
     if (fileRef.current) {
@@ -61,6 +66,21 @@ const ChatInput: FC<ChatInputProps> = ({ onSubmit }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
+  useEffect(() => {
+    const event = async (e: ClipboardEvent) => {
+      e.preventDefault();
+      if (!e?.clipboardData?.files.length) {
+        return;
+      }
+      const file = e.clipboardData.files[0];
+
+      setFile(file);
+    };
+    document.addEventListener('paste', event);
+
+    return () => document.removeEventListener('paste', event);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -97,13 +117,25 @@ const ChatInput: FC<ChatInputProps> = ({ onSubmit }) => {
           }}
           autoFocus
           startAdornment={
-            <Button
-              onClick={handleClickAttachment}
-              variant='transparent'
-              className='chat-input__attachment'
-            >
-              <PaperclipIcon width={18} height={18} />
-            </Button>
+            <Flex alignItems='center' gap={4}>
+              <Button
+                onClick={handleClickAttachment}
+                variant='transparent'
+                className='chat-input__attachment'
+              >
+                <PaperclipIcon width={16} height={16} />
+              </Button>
+              <ChatInputTemplates
+                onChange={(text) => setValue((prev) => prev + text)}
+              >
+                <Button
+                  variant='transparent'
+                  className='chat-input__attachment'
+                >
+                  <TbMessageDots size={20} color='var(--grey)' />
+                </Button>
+              </ChatInputTemplates>
+            </Flex>
           }
           endAdornment={
             <Button
@@ -114,7 +146,7 @@ const ChatInput: FC<ChatInputProps> = ({ onSubmit }) => {
             >
               <Flex gap={6} alignItems='center'>
                 <SendIcon width={16} height={16} fill='var(--violet)' />
-                <Typography color='white'>Отправить</Typography>
+                {!isMobile && <Typography color='white'>Отправить</Typography>}
               </Flex>
             </Button>
           }

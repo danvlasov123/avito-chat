@@ -4,13 +4,12 @@ import App from './App.tsx';
 import './index.css';
 import 'normalize.css';
 
-import { store } from 'src/store';
-import { Provider } from 'react-redux';
+import { StoreProvider } from './context/StoreContext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Provider store={store}>
+    <StoreProvider>
       <App />
-    </Provider>
+    </StoreProvider>
   </StrictMode>
 );
