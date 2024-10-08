@@ -1,9 +1,21 @@
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+} from '@headlessui/react';
 
 import { Button, Typography } from 'src/components/UI';
 
 import { FaSort } from 'react-icons/fa';
 
+import { DayPicker } from 'react-day-picker';
+import { ru } from 'react-day-picker/locale';
+import 'react-day-picker/style.css';
+import 'src/styles/popover.scss';
 
 const SidebarMessagesSort = () => {
   return (
@@ -30,7 +42,14 @@ const SidebarMessagesSort = () => {
           <button className='dropdown__menu--item'>За вчера</button>
         </MenuItem>
         <MenuItem>
-          <button className='dropdown__menu--item'>Выбрать дату</button>
+          <Popover className={'z-10'}>
+            <PopoverButton className='w-full'>
+              <button className='dropdown__menu--item'>Выбрать дату</button>
+            </PopoverButton>
+            <PopoverPanel transition anchor='bottom end' className='popover'>
+              <DayPicker locale={ru} mode='single' />
+            </PopoverPanel>
+          </Popover>
         </MenuItem>
         <Typography
           uppercase

@@ -8,6 +8,12 @@
   &:hover {
     opacity: 0.8;
   }
+
+  &__search {
+    background-color: transparent !important;
+    border: 1px solid var(--white-grey) !important;
+    transition: all 0.2s linear;
+  }
 }
 
 @media (max-width: 768px) {

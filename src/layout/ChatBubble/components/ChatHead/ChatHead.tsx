@@ -4,7 +4,7 @@ import './ChatHead.scss';
 import { Avatar } from 'src/components/Avatar';
 import { Button, Typography } from 'src/components/UI';
 import { ArrowRightIcon, SearchIcon } from 'src/components/Icons';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import { BiArrowToTop } from 'react-icons/bi';
@@ -13,9 +13,12 @@ import { PiImagesLight } from 'react-icons/pi';
 import { CiSearch } from 'react-icons/ci';
 import { IoIosSwap } from 'react-icons/io';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useMediaQuery } from 'usehooks-ts';
 import { useStore } from 'src/context/StoreContext';
+import { Search } from 'src/components/Search';
+import { IoCloseOutline } from 'react-icons/io5';
+import cn from 'classnames';
 
 const data = {
   name: 'Ваня Пупкин',
@@ -32,6 +35,15 @@ const ChatHead = ({
 }) => {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const { setSelectedId } = useStore();
+
+  const [isOpenSearch, setIsOpenSearch] = useState(true);
+
+  const handleOpenSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    setIsOpenSearch(true);
+  };
+
+  const handleCloseSearch = () => setIsOpenSearch(false);
 
   return (
     <Flex full direction='column'>
@@ -97,12 +109,36 @@ const ChatHead = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className='chat-head__actions'
+          className={cn('chat-head__actions', {
+            'w-full': isOpenSearch,
+          })}
         >
           <Flex gap={24} alignItems='center'>
-            <Button variant='transparent'>
-              <SearchIcon width={16} height={16} fill='var(--violet)' />
-            </Button>
+            <AnimatePresence>
+              {isOpenSearch && (
+                <motion.div
+                  onClick={(e) => e.stopPropagation()}
+                  className='w-full'
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                >
+                  <Search
+                    placeholder='Поиск'
+                    className='chat-head__search'
+                    endAdornment={
+                      <Button variant='transparent' onClick={handleCloseSearch}>
+                        <IoCloseOutline size={16} color='var(--grey)' />
+                      </Button>
+                    }
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            {!isOpenSearch && (
+              <Button variant='transparent' onClick={handleOpenSearch}>
+                <SearchIcon width={16} height={16} fill='var(--violet)' />
+              </Button>
+            )}
             <Button variant='transparent'>
               <Flex alignItems='center' gap={6}>
                 <Typography color='var(--violet)' lineHeight={1}>
