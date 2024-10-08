@@ -36,7 +36,7 @@ const ChatHead = ({
   const isMobile = useMediaQuery('(max-width: 768px)');
   const { setSelectedId } = useStore();
 
-  const [isOpenSearch, setIsOpenSearch] = useState(true);
+  const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   const handleOpenSearch = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();

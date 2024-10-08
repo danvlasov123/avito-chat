@@ -8,8 +8,10 @@ import { useMediaQuery } from 'usehooks-ts';
 
 import './styles/dropdown.scss';
 import './styles/dialog.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { ConnectTgModal } from './components/Modals/ConnectTg';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const { selectedId } = useStore();
@@ -23,6 +25,18 @@ const App = () => {
         {isMobile ? selectedId && <ChatBubble /> : <ChatBubble />}
       </Flex>
       <ConnectTgModal />
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='colored'
+      />
     </Fragment>
   );
 };

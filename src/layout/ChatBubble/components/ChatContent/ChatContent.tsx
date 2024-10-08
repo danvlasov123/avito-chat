@@ -4,6 +4,9 @@ import { ChatInput, MessageList } from 'src/modules';
 import './ChatContent.scss';
 import { useState } from 'react';
 import getHoursDifference from 'src/utils/hasOneHourPassed';
+import { toast } from 'react-toastify';
+import { Avatar } from 'src/components/Avatar';
+import { Typography } from 'src/components/UI';
 
 const ChatContent = () => {
   const [messages, setMessages] = useState([
@@ -34,6 +37,18 @@ const ChatContent = () => {
   ]);
 
   const handleSend = ({ text, image }: { text: string; image: string }) => {
+    toast(
+      <Flex gap={8} alignItems='center'>
+        <Avatar width={32} height={32} name={'я'} />
+        <div>
+          <Typography fontWeight={500}>Вася Пупкин</Typography>
+          <Typography fontWeight={400} fontSize={12} color='var(--grey)'>
+            {text}
+          </Typography>
+        </div>
+      </Flex>,
+      {}
+    );
     if (
       getHoursDifference(
         messages[messages.length - 1].date,

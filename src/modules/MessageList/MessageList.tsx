@@ -66,7 +66,6 @@ const MessageList: FC<MessageListProps> = ({ messages }) => {
                         />
                       );
                     }
-
                     return (
                       <Message
                         text={message.text}

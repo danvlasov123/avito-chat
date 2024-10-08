@@ -6,6 +6,7 @@ import './Message.scss';
 import { Flex, FlexJustifyContent } from '../Flex';
 import { DoubleCheckIcon } from '../Icons';
 import cn from 'classnames';
+import { motion } from 'framer-motion';
 
 const STATUS_TRANSLATE = {
   SEND: 'Отправлено',
@@ -33,7 +34,11 @@ const Message: FC<MessageProps> = ({
   };
 
   return (
-    <Flex className={classNameMessage} direction='column'>
+    <motion.div
+      className={classNameMessage}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <div className='message__content'>
         {image && (
           <a data-fancybox='gallery' href={image}>
@@ -75,7 +80,7 @@ const Message: FC<MessageProps> = ({
           )}
         </Flex>
       )}
-    </Flex>
+    </motion.div>
   );
 };
 

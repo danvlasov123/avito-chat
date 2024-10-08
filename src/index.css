@@ -82,3 +82,8 @@ p {
 .rdp-month_caption {
   font-size: 16px !important;
 }
+
+.Toastify__toast {
+  padding: 4px !important;
+  border-radius: 12px !important;
+}
