@@ -11,12 +11,14 @@ import { useMediaQuery } from 'usehooks-ts';
 
 import { TbMessageDots } from 'react-icons/tb';
 import { ChatInputTemplates } from './templates';
+import { useStore } from 'src/context/StoreContext';
 
 type ChatInputProps = {
   onSubmit: (value: { text: string; image: string }) => void;
 };
 
 const ChatInput: FC<ChatInputProps> = ({ onSubmit }) => {
+  const { handleTopMessage } = useStore();
   const [file, setFile] = useState<File | null>(null);
   const [value, setValue] = useState('');
 
@@ -30,6 +32,7 @@ const ChatInput: FC<ChatInputProps> = ({ onSubmit }) => {
   };
 
   const handleSend = (image: string) => {
+    handleTopMessage();
     onSubmit({ text: value, image });
     setValue('');
     setFile(null);
@@ -54,6 +57,7 @@ const ChatInput: FC<ChatInputProps> = ({ onSubmit }) => {
       ) {
         if (value) {
           onSubmit({ text: value, image: '' });
+          handleTopMessage();
         }
         setValue('');
         event.preventDefault();

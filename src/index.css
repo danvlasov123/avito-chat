@@ -87,3 +87,8 @@ p {
   padding: 4px !important;
   border-radius: 12px !important;
 }
+
+ul {
+  padding: 0;
+  margin: 0;
+}

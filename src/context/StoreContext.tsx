@@ -11,12 +11,16 @@ export type StoreContextType = {
   selectedId: number | null;
   setSelectedId: React.Dispatch<React.SetStateAction<number | null>>;
   data: MessageType[];
+  handleTopMessage: () => void;
+  setMessages: React.Dispatch<React.SetStateAction<MessageType[]>>;
 };
 
 const defaultValue = {
   selectedId: null,
   setSelectedId: () => {},
+  handleTopMessage: () => {},
   data: [],
+  setMessages: () => {},
 };
 
 const StoreContext = createContext<StoreContextType>(defaultValue);
@@ -24,10 +28,23 @@ const StoreContext = createContext<StoreContextType>(defaultValue);
 const StoreProvider: FC<PropsWithChildren> = ({ children }) => {
   const [selectedId, setSelectedId] = useState<number | null>(2);
 
+  const [messages, setMessages] = useState(data);
+
+  const handleTopMessage = () => {
+    if (selectedId) {
+      const sorted = [...data].sort((a) => {
+        return a.id !== selectedId ? 0 : a ? -1 : 1;
+      });
+      setMessages(sorted);
+    }
+  };
+
   const value = {
     selectedId,
     setSelectedId,
-    data,
+    data: messages,
+    handleTopMessage,
+    setMessages,
   };
 
   return (
