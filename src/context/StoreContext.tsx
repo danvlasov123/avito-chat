@@ -32,10 +32,14 @@ const StoreProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const handleTopMessage = () => {
     if (selectedId) {
-      const sorted = [...data].sort((a) => {
-        return a.id !== selectedId ? 0 : a ? -1 : 1;
-      });
-      setMessages(sorted);
+      // const sorted = [...data].sort((a) => {
+      //   return a.id !== selectedId ? 0 : a ? -1 : 1;
+      // });
+      const message = messages.find((m) => m.id === selectedId);
+
+      if (message) {
+        setMessages((prev) => [{ ...message, id: prev.length + 1 }, ...prev]);
+      }
     }
   };
 
